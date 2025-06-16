@@ -21,6 +21,9 @@ function afficherMeteo(meteo) {
 async function majMeteo() {
   const config = await getConfig();
   const meteo = await getMeteo(config.latitude, config.longitude);
+  document.querySelector(
+    ".title"
+  ).textContent = `Météo de la ville de ${config.ville}`;
   afficherMeteo(meteo);
 }
 
