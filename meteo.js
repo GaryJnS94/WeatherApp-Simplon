@@ -8,6 +8,7 @@ async function getMeteo(lat, lon) {
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`;
   const response = await fetch(url);
   const data = await response.json();
+  console.log("Données météo récupérées :", data);
   return data.current_weather;
 }
 
@@ -20,7 +21,6 @@ function afficherMeteo(meteo) {
 async function majMeteo() {
   const config = await getConfig();
   const meteo = await getMeteo(config.latitude, config.longitude);
-  console.log("Données météo récupérées :", meteo);
   afficherMeteo(meteo);
 }
 
